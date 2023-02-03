@@ -70,8 +70,8 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-GGJ2023_Sapling/Library
-GGJ2023_Sapling/Temp 
-GGJ2023_Sapling/Log
-GGJ2023_Sapling/UserSettings
-GGJ2023_Sapling/Logs
+GGJ2023_Sapling_Unity/Library
+GGJ2023_Sapling_Unity/Temp 
+GGJ2023_Sapling_Unity/Log
+GGJ2023_Sapling_Unity/UserSettings
+GGJ2023_Sapling_Unity/Logs
