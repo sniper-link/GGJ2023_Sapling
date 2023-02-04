@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class TheSapling : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public HealthBar healthBar;
+    public int maxHealth;
+    public int currentHealth;
+
     void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void TakeDamage(int damage) {
+        currentHealth -= damage;
+        if (currentHealth < 0){
+            currentHealth = 0;
+        }
+        healthBar.SetHealth(currentHealth);
     }
+
+    public void Heal(int health) {
+        currentHealth += health;
+        if(currentHealth > maxHealth){
+            currentHealth = maxHealth;
+        }
+        healthBar.SetHealth(currentHealth);
+    }
+
+
 }
