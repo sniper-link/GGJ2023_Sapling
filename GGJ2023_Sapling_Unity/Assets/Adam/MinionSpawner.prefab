@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7029733185276551828}
+  - component: {fileID: -6384409062860455922}
   m_Layer: 0
   m_Name: MinionSpawner
   m_TagString: Untagged
@@ -31,3 +32,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6384409062860455922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6403021406005515273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124ab82cef1d16f4da794739ca2d5e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinionList:
+  - {fileID: 6221958979008874607, guid: 165040ef3c9e8f346b9f2092d7f178af, type: 3}
+  - {fileID: 937192426105903596, guid: 1395535a17fed7b46a41fe66cb931074, type: 3}
+  - {fileID: 5548892304897023456, guid: 307ffe5da129bd049b65177203cc1f62, type: 3}
+  - {fileID: 4175198220185603581, guid: d0ce8c74ceb09be4ab4c31e5e7f2bd31, type: 3}
+  testloc: {x: 0, y: 0}

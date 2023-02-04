@@ -21,7 +21,7 @@ public class MinionSpawner : MonoBehaviour
         spawnMinion(MinionIndex.Mushroom, testloc);
     }
 
-    private void spawnMinion(MinionIndex minionIndex, Vector2 spawnLocation) {
+    public void spawnMinion(MinionIndex minionIndex, Vector2 spawnLocation) {
        // (int)minionIndex;
         // for (int i = 0; i < count; i++) {
         //     Vector3 spawnPos = this.transform.position;
