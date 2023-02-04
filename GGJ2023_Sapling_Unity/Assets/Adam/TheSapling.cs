@@ -11,8 +11,13 @@ public class TheSapling : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        //healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetMaxHealth(maxHealth);
 
+    }
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.Space)){
+            TakeDamage(2);
+        }
     }
 
     public void TakeDamage(float damage) {
