@@ -5,8 +5,8 @@ using UnityEngine;
 public class TheSapling : MonoBehaviour
 {
     public HealthBar healthBar;
-    public int maxHealth;
-    public int currentHealth;
+    public float maxHealth;
+    public float currentHealth;
 
     void Start()
     {
@@ -15,7 +15,7 @@ public class TheSapling : MonoBehaviour
 
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(float damage) {
         currentHealth -= damage;
         if (currentHealth < 0){
             currentHealth = 0;
@@ -23,7 +23,7 @@ public class TheSapling : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
-    public void Heal(int health) {
+    public void Heal(float health) {
         currentHealth += health;
         if(currentHealth > maxHealth){
             currentHealth = maxHealth;
