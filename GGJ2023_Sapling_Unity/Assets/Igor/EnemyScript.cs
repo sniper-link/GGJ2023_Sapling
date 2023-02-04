@@ -42,7 +42,7 @@ public class EnemyScript : MonoBehaviour
         Vector2 moveDir = location - (Vector2)transform.position;
         transform.position += ((Vector3)moveDir).normalized * Time.deltaTime * moveSpeed;
         //Debug.Log(moveDir);
-        //transform.position = Vector2.MoveTowards(moveDir, location, 1f)*Time.deltaTime*moveSpeed;
+        //moveDir = Vector2.MoveTowards(transform.position, location, 1f)*Time.deltaTime*moveSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,19 +50,25 @@ public class EnemyScript : MonoBehaviour
         Debug.LogWarning(collision.name);
         if (collision.TryGetComponent(out TheSapling sapling)) {
             //change back to float
-            sapling.TakeDamage((int)damage);
             Debug.LogWarning("Hit the Tree");
             Destroy(gameObject);
+            sapling.TakeDamage((int)damage);
+            
            // sapling.takeDamage(damage);
         }
         
+    }
+
+    private void DeathEvents() {
+        
+        Destroy(gameObject); 
     }
     // Start is called before the first frame update
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.LogWarning(collision.gameObject.name);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
