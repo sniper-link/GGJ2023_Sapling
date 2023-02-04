@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public TheSapling GetSapling()
+    public static TheSapling GetSapling()
     {
         return instance.saplingRef;
     }

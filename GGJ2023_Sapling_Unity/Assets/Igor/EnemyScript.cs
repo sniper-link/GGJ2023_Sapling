@@ -9,20 +9,27 @@ public class EnemyScript : MonoBehaviour
     public CircleCollider2D cc;
     public Rigidbody2D rb;
     public Vector2 saplingLoc;
-    float moveSpeed = 1;
+    //public TheSapling saplingRef;
+    public float moveSpeed = 5;
 
     private void Awake()
     {
         
         SpriteRenderer sprRend;
-        cc = gameObject.GetComponent<CircleCollider2D>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        //cc = gameObject.GetComponent<CircleCollider2D>();
+        //rb = gameObject.GetComponent<Rigidbody2D>();
 
 
     }
     void Start()
     {
-        saplingLoc = GameObject.Find("TheSapling").transform.position;
+        //saplingRef  = GameManager.GetSapling();
+        saplingLoc = GameManager.GetSapling().transform.position;
+        CircleCollider2D uisdgf = GetComponent<CircleCollider2D>();
+        if (uisdgf)
+        {
+            Debug.Log("sdnbfgjksdg");
+        }
     }
 
     float dealDamange(float d) 
@@ -32,20 +39,29 @@ public class EnemyScript : MonoBehaviour
     }
 
     void moveToSapling(Vector2 location) {
-        transform.position = Vector2.MoveTowards(transform.position, location, 1);
+        Vector2 moveDir = location - (Vector2)transform.position;
+        transform.position += ((Vector3)moveDir).normalized * Time.deltaTime * moveSpeed;
+        //Debug.Log(moveDir);
+        //transform.position = Vector2.MoveTowards(moveDir, location, 1f)*Time.deltaTime*moveSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.LogWarning(collision.name);
         if (collision.TryGetComponent(out TheSapling sapling)) {
             //change back to float
             sapling.TakeDamage((int)damage);
+            Debug.LogWarning("Hit the Tree");
+            Destroy(gameObject);
            // sapling.takeDamage(damage);
         }
         
     }
     // Start is called before the first frame update
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.LogWarning(collision.gameObject.name);
+    }
 
     // Update is called once per frame
     void Update()
