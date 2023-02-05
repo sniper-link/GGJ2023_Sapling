@@ -8,6 +8,7 @@ public class Roots : MonoBehaviour
     public Vector3 targetLocation;
     public float moveSpeed = 1f;
     public float circleRad = 0.3f;
+    public LayerMask resourceLayer;
 
     public void MoveRoot(Vector2 targetLoction)
     {
@@ -23,7 +24,11 @@ public class Roots : MonoBehaviour
             if (Vector3.Distance(targetLocation, transform.position) <= 0.2f)
             {
                 //Physics2D.CircleCast(transform.position, circleRad);
-                Collider2D firstHit = Physics2D.OverlapCircle(transform.position, circleRad);
+                Collider2D firstHit = Physics2D.OverlapCircle(transform.position, circleRad, resourceLayer);
+                if (firstHit == null) {
+                    Debug.Log("touched nothing");
+                    return;
+                }
                 if (firstHit.TryGetComponent(out WaterPond waterPond))
                 {
                     Debug.Log("water");
@@ -47,7 +52,9 @@ public class Roots : MonoBehaviour
                 }
                 else
                 {
+
                     //Destroy(this);
+                    Debug.Log("thouched something else");
                 }
                 Debug.Log(firstHit.name);
                 canMove = false;
