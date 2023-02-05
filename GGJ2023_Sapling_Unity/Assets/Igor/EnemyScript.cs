@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public float health;
-    public float damage;
+    public float maxHealth;
+    public float currentHealth;
+    public float enemyDamage;
     public CircleCollider2D cc;
     public Rigidbody2D rb;
     public Vector2 saplingLoc;
     //public TheSapling saplingRef;
     public float moveSpeed = 5;
 
+    public GameObject deathSmokeVFX;
+
+    public Minion targetMinion = null;
+    public bool canAttack = true;
+
     private void Awake()
     {
-        
-        SpriteRenderer sprRend;
+        currentHealth = maxHealth;
+       // SpriteRenderer sprRend;
         //cc = gameObject.GetComponent<CircleCollider2D>();
         //rb = gameObject.GetComponent<Rigidbody2D>();
 
@@ -34,7 +40,7 @@ public class EnemyScript : MonoBehaviour
 
     float dealDamange(float d) 
     {
-        d = damage;
+        d = enemyDamage;
         return d;  
     }
 
@@ -45,34 +51,98 @@ public class EnemyScript : MonoBehaviour
         //moveDir = Vector2.MoveTowards(transform.position, location, 1f)*Time.deltaTime*moveSpeed;
     }
 
+    void MoveToTargetMinion()
+    {
+        if (Vector3.Distance(targetMinion.transform.position, transform.position) < 0.1f)
+        {
+            // attack
+            AttackMinion();
+        }
+        else
+        {
+            // move
+            Vector3 moveDir = (targetMinion.transform.position - transform.position);
+            transform.position += moveDir.normalized * Time.deltaTime * moveSpeed;
+        }
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogWarning(collision.name);
+        //Debug.LogWarning(collision.name);
         if (collision.TryGetComponent(out TheSapling sapling)) {
             //change back to float
             Debug.LogWarning("Hit the Tree");
             Destroy(gameObject);
-            sapling.TakeDamage((int)damage);
+            sapling.TakeDamage((int)enemyDamage);
             
            // sapling.takeDamage(damage);
         }
         
     }
 
-    private void DeathEvents() {
-        
-        Destroy(gameObject); 
-    }
-    // Start is called before the first frame update
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void DeathEvents() 
     {
-        Debug.LogWarning(collision.gameObject.name);
+        
+        StartCoroutine(DeathDelay(Instantiate(deathSmokeVFX, transform.position + new Vector3(0, 0, -0.5f), Quaternion.identity, null)));
+        //Destroy(gameObject);
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-        moveToSapling(saplingLoc);
+        if (currentHealth <= 0)
+        {
+            return;
+        }
+
+        if (!targetMinion)
+        {
+            moveToSapling(saplingLoc);
+        }
+        else
+        {
+            MoveToTargetMinion();
+        }
     }
 
+    public void TakeDamage(float amount, Minion attackingMinion = null)
+    {
+        currentHealth -= amount;
+        if (currentHealth <= 0)
+        {
+            //currentHealth = 0;
+            DeathEvents();
+            return;
+        }
+
+        if (!targetMinion)
+        {
+            targetMinion = attackingMinion;
+        }
+        //healthBar.SetHealth(currentHealth);
+    }
+
+    IEnumerator DeathDelay(GameObject expVFX)
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+        Destroy(expVFX);
+    }
+
+    void AttackMinion()
+    {
+        if (canAttack)
+        {
+            canAttack = false;
+            targetMinion.TakeDamage(enemyDamage);
+            StartCoroutine(AttackCooldown());
+        }
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        canAttack = true;
+    }
 }
