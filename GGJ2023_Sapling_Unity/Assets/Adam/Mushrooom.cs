@@ -14,7 +14,7 @@ public class Mushrooom : Minion
             if (collider.TryGetComponent(out EnemyScript enemy))
             {
                 //enemy.
-                enemy.TakeDamage(1);
+                enemy.TakeDamage(2);
             }
         }
         //StartCoroutine(DeathDelay(expVFX));

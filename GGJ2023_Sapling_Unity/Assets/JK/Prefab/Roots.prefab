@@ -152,6 +152,9 @@ MonoBehaviour:
   targetLocation: {x: 6.06, y: -2.56, z: -0.1}
   moveSpeed: 1.5
   circleRad: 0.3
+  resourceLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!58 &2122225973
 CircleCollider2D:
   m_ObjectHideFlags: 0

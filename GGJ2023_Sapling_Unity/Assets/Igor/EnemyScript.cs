@@ -13,6 +13,7 @@ public class EnemyScript : MonoBehaviour
     //public TheSapling saplingRef;
     public float moveSpeed = 5;
 
+
     public GameObject deathSmokeVFX;
     public GameObject poopPrefab;
 
@@ -71,22 +72,20 @@ public class EnemyScript : MonoBehaviour
         //Debug.LogWarning(collision.name);
         if (collision.TryGetComponent(out TheSapling sapling)) {
             //change back to float
-            Debug.LogWarning("Hit the Tree");
+            //Debug.LogWarning("Hit the Tree");
             Destroy(gameObject);
             sapling.TakeDamage(enemyDamage);
 
             // sapling.takeDamage(damage);
-        } else if(collision.TryGetComponent(out Minion minion))
-        {
-            minion.TakeDamage(enemyDamage);
-            TakeDamage(minion.damage, minion);
         }
         
     }
 
+
+
     protected virtual void DeathEvents() 
     {
-        
+        GetComponent<CircleCollider2D>().enabled = false;
         StartCoroutine(DeathDelay(Instantiate(deathSmokeVFX, transform.position + new Vector3(0, 0, -0.5f), Quaternion.identity, null)));
         //Destroy(gameObject);
     }
@@ -111,6 +110,7 @@ public class EnemyScript : MonoBehaviour
 
     public void TakeDamage(float amount, Minion attackingMinion = null)
     {
+        Debug.Log("ouch");
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
@@ -119,7 +119,7 @@ public class EnemyScript : MonoBehaviour
             return;
         }
 
-        if (!targetMinion)
+        if (targetMinion == null)
         {
             targetMinion = attackingMinion;
         }
@@ -141,6 +141,10 @@ public class EnemyScript : MonoBehaviour
 
     void AttackMinion()
     {
+        if(targetMinion.currentHealth <= 0) {
+            targetMinion = null;
+            return;
+        }
         if (canAttack)
         {
             canAttack = false;
