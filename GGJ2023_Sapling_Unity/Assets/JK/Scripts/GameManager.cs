@@ -6,7 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public TheSapling saplingRef;
     public RootSpawner rootSpawner;
+    public MinionSpawner minionSpawner;
     static GameManager instance;
+
+    public int waterAmount = 0;
+    public int poopAmount = 0;
 
     private void Awake()
     {
@@ -29,5 +33,20 @@ public class GameManager : MonoBehaviour
     public static RootSpawner GetRootSpawner()
     {
         return instance.rootSpawner;
+    }
+
+    public static MinionSpawner GetMinionSpawner()
+    {
+        return instance.minionSpawner;
+    }
+
+    public static void AddWater(int amount = 1)
+    {
+        instance.waterAmount += amount;
+    }
+
+    public static void AddPoop(int amount = 1)
+    {
+        instance.poopAmount += amount;
     }
 }
