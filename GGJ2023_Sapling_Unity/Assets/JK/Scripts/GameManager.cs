@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public TheSapling saplingRef;
     public RootSpawner rootSpawner;
     public MinionSpawner minionSpawner;
+    public Spawner enemySpawner;
     static GameManager instance;
 
     public WaterText waterText;
@@ -15,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     public List<int> minionWaterCost;
     public List<int> minionPoopCost;
+
+    public GameObject waterPondPrefab;
+
+    public int treeGrowLevel = 0;
 
     private void Awake()
     {
@@ -67,5 +72,26 @@ public class GameManager : MonoBehaviour
     public static int GetMinionPoopCost(MinionIndex minionIndex)
     {
         return instance.minionPoopCost[(int)minionIndex];
+    }
+
+    public static void SpawnWaterPonds()
+    {
+        // play rain vfx
+        Vector2 randomSpot = new Vector2(Random.Range(0.1f, 0.9f), Random.Range(0.2f, 0.9f));
+        Vector3 spawnLoc = Camera.main.ViewportToWorldPoint(randomSpot);
+        spawnLoc.z = -0.1f;
+        Instantiate(instance.waterPondPrefab, spawnLoc, Quaternion.identity, null);
+    }
+
+    public static void GrowTree()
+    {
+        // check if palyer have enough resources
+        // if yes, add growth level
+        // 5 level of growth
+
+        if (instance.treeGrowLevel == 5)
+        {
+            Debug.Log("Game won");
+        }
     }
 }

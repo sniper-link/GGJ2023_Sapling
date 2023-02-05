@@ -12,6 +12,7 @@ public class PlayerAction : MonoBehaviour
     private void Start()
     {
         rootSpawner = GameManager.GetRootSpawner();
+        minionSpawner = GameManager.GetMinionSpawner();
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class PlayerAction : MonoBehaviour
                 else
                 {
                     // spawn minion test
-                    minionSpawner.spawnMinion(MinionIndex.Carrort, clickLoc);
+                    //minionSpawner.spawnMinion(MinionIndex.Carrort, clickLoc);
                 }
 
                 

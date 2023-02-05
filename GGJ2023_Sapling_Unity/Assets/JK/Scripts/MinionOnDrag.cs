@@ -15,7 +15,7 @@ public class MinionOnDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     private void Start()
     {
         waterCostText.text = GameManager.GetMinionWaterCost(minionIndex).ToString();
-        //poopCostText.text = GameManager.GetMinionPoopCost(minionIndex).ToString();
+        poopCostText.text = GameManager.GetMinionPoopCost(minionIndex).ToString();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -28,15 +28,15 @@ public class MinionOnDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("begin drag");
+        //Debug.Log("begin drag");
         mouseOffset = transform.position - Input.mousePosition;
-        Debug.Log(mouseOffset);
+        //Debug.Log(mouseOffset);
         startLocation = transform.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("end drag");
+        //Debug.Log("end drag");
         transform.position = startLocation;
         Vector3 spawnLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //Debug.Log(spawnLocation);

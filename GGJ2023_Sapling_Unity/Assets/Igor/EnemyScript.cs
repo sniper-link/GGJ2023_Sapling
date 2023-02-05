@@ -31,11 +31,6 @@ public class EnemyScript : MonoBehaviour
     {
         //saplingRef  = GameManager.GetSapling();
         saplingLoc = GameManager.GetSapling().transform.position;
-        CircleCollider2D uisdgf = GetComponent<CircleCollider2D>();
-        if (uisdgf)
-        {
-            Debug.Log("sdnbfgjksdg");
-        }
     }
 
     float dealDamange(float d) 

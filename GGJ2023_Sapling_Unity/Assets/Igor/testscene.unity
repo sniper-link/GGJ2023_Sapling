@@ -808,6 +808,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saplingRef: {fileID: 642294422}
   rootSpawner: {fileID: 0}
+  minionSpawner: {fileID: 0}
+  enemySpawner: {fileID: 0}
+  waterText: {fileID: 0}
+  waterAmount: 0
+  poopAmount: 0
+  minionWaterCost: 
+  minionPoopCost: 
+  waterPondPrefab: {fileID: 0}
 --- !u!4 &1020233537
 Transform:
   m_ObjectHideFlags: 0
@@ -1129,30 +1137,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434022155}
   m_CullTransparentMesh: 1
---- !u!1 &2123575297 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 70124229742161688, guid: c088a7ead9d3c794da18807a8cb0b077, type: 3}
-  m_PrefabInstance: {fileID: 851214915}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2123575299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123575297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bebe50a1bc71a948b4c688884dc7f90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyList:
-  - {fileID: 4060519733128050906, guid: 1c1ead63ea9ded84d8b77d50517048b0, type: 3}
-  - {fileID: 4060519733128050906, guid: 1c1ead63ea9ded84d8b77d50517048b0, type: 3}
-  - {fileID: 4060519733128050906, guid: 1c1ead63ea9ded84d8b77d50517048b0, type: 3}
-  - {fileID: 4060519733128050906, guid: 1c1ead63ea9ded84d8b77d50517048b0, type: 3}
-  spawnRangeXMin: -3
-  spawnRangeXMax: 3
-  spawnRangeYMin: 0
-  spawnRangeYMax: -3
-  SpawnCd: 5
