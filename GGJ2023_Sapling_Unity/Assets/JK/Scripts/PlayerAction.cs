@@ -27,7 +27,7 @@ public class PlayerAction : MonoBehaviour
 
             Vector2 clickLoc = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            Debug.Log(hit);
+            //Debug.Log(hit);
             if (hit)
             {
                 if(hit.transform.TryGetComponent(out WaterPond waterPond))
@@ -48,7 +48,7 @@ public class PlayerAction : MonoBehaviour
                 }
 
                 
-                Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                //Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             }
         }
     }

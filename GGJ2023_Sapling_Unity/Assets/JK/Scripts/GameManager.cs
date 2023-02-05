@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public int waterAmount = 0;
     public int poopAmount = 0;
 
+    public List<int> minionWaterCost;
+    public List<int> minionPoopCost;
+
     private void Awake()
     {
         if (instance != null)
@@ -54,5 +57,15 @@ public class GameManager : MonoBehaviour
     public static void AddPoop(int amount = 1)
     {
         instance.poopAmount += amount;
+    }
+
+    public static int GetMinionWaterCost(MinionIndex minionIndex)
+    {
+        return instance.minionWaterCost[(int)minionIndex];
+    }
+
+    public static int GetMinionPoopCost(MinionIndex minionIndex)
+    {
+        return instance.minionPoopCost[(int)minionIndex];
     }
 }
