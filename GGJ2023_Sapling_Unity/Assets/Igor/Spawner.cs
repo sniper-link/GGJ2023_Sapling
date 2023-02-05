@@ -30,7 +30,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i <= 10; i++)
         {
             int selectEnemy = Random.Range(0, enemyList.Count - 1);
-            Vector3 v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(spawnRangeXMin, spawnRangeXMax),Random.Range(spawnRangeYMin, spawnRangeYMax), 10));
+            Vector3 v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(spawnRangeXMin, spawnRangeXMax),Random.Range(spawnRangeYMin, spawnRangeYMax), 0.5f));
             GameObject spawn = Instantiate(enemy[selectEnemy], v3Pos, Quaternion.identity);
 
         }
