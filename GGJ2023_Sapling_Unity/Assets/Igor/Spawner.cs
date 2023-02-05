@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
 
 
 
-    public float SpawnCd = 20f;
+    public float SpawnCd;
 
 
     // Start is called before the first frame update
@@ -30,13 +30,11 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i <= 10; i++)
         {
             int selectEnemy = Random.Range(0, enemyList.Count - 1);
-            Vector3 v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(-3,3),Random.Range(0,-3), 10));
-            yield return new WaitForSeconds(interval);
-
-
+            Vector3 v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(spawnRangeXMin, spawnRangeXMax),Random.Range(spawnRangeYMin, spawnRangeYMax), 10));
             GameObject spawn = Instantiate(enemy[selectEnemy], v3Pos, Quaternion.identity);
-            
+
         }
+        yield return new WaitForSeconds(interval);
         StartCoroutine(spawnEnemy(interval, enemy));
     }
 
