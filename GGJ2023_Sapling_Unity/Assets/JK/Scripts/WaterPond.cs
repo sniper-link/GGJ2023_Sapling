@@ -6,20 +6,23 @@ public class WaterPond : MonoBehaviour
 
 
 {
-    public GameObject pond;
-    WaterBar barRef;
-    float startingWater;
-    float remainingWater;
+    //public GameObject pond;
+    //WaterBar barRef;
     public SpriteRenderer newPond;
-    public Sprite changeWater;
+    //public Sprite changeWater;
+
+    public List<Sprite> waterLevelSprite;
+
+    public int currentWaterLevel;
     // Start is called before the first frame update
     void Start()
     {
-        startingWater = 100;
+        currentWaterLevel = 10;
+        //startingWater = 100;
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         //barValue = barRef.barVal;
        
@@ -28,7 +31,33 @@ public class WaterPond : MonoBehaviour
             newPond.sprite = changeWater;
         }
         else if(remainingWater == 0) { 
-            Destroy(gameObject);
+            //Destroy(gameObject);
+        }
+    }*/
+
+    public void DrainingWater()
+    {
+        StartCoroutine(WaterDraining());
+    }
+
+    IEnumerator WaterDraining()
+    {
+        while (currentWaterLevel > 0 )
+        {
+            Debug.Log("draining water");
+            yield return new WaitForSeconds(1f);
+            currentWaterLevel--;
+            if (currentWaterLevel == 5)
+            {
+                // change sprites
+                newPond.sprite = waterLevelSprite[1];
+            }
+            else if (currentWaterLevel == 0)
+            {
+                newPond.sprite = waterLevelSprite[2];
+                yield return new WaitForSeconds(1.5f);
+                Destroy(gameObject);
+            }
         }
     }
 }
