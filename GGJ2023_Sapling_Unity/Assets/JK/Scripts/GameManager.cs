@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public TheSapling saplingRef;
+    public RootSpawner rootSpawner;
     static GameManager instance;
 
     private void Awake()
@@ -23,5 +24,10 @@ public class GameManager : MonoBehaviour
     public static TheSapling GetSapling()
     {
         return instance.saplingRef;
+    }
+
+    public static RootSpawner GetRootSpawner()
+    {
+        return instance.rootSpawner;
     }
 }
