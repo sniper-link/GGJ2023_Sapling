@@ -9,6 +9,8 @@ public class RootSpawner : MonoBehaviour
     public GameObject rootsFolder;
     public Vector2 testLoc;
 
+    public float rootSpawnZ = -0.1f;
+
     private void Start()
     {
         startLocation = (Vector2)GameManager.GetSapling().transform.position;
@@ -26,7 +28,7 @@ public class RootSpawner : MonoBehaviour
             Destroy(rootsFolder.transform.GetChild(0));
         }
         Vector3 spawnLoction = startLocation;
-        spawnLoction.z = -0.1f;
-        Instantiate(rootsPrefab, spawnLoction, Quaternion.identity, rootsFolder.transform);
+        spawnLoction.z = rootSpawnZ;
+        Instantiate(rootsPrefab, spawnLoction, Quaternion.identity, rootsFolder.transform).GetComponent<Roots>().MoveRoot(targetLoc);
     }
 }
