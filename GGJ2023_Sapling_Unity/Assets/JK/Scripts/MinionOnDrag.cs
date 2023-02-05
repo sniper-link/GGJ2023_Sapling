@@ -2,12 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MinionOnDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     Vector2 startLocation;
     Vector2 mouseOffset;
     public MinionIndex minionIndex;
+    public Text waterCostText;
+    public Text poopCostText;
+
+    private void Start()
+    {
+        waterCostText.text = GameManager.GetMinionWaterCost(minionIndex).ToString();
+        //poopCostText.text = GameManager.GetMinionPoopCost(minionIndex).ToString();
+    }
 
     public void OnDrag(PointerEventData eventData)
     {
