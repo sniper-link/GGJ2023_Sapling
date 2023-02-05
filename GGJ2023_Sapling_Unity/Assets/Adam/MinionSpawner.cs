@@ -17,6 +17,7 @@ public class MinionSpawner : MonoBehaviour
     
     public List<GameObject> MinionList;
     public Vector2 testloc;
+    //Vector2 clickLoc = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
     // void Start()
     // {
