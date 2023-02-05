@@ -36,11 +36,13 @@ public class PlayerAction : MonoBehaviour
                     // send out roots
                     //rootSpawner.SpawnRoots((Vector2)hit.transform.position);
                     rootSpawner.SpawnRoots((Vector2)hit.transform.position);
+                    
                 }
                 else if(hit.transform.TryGetComponent(out Poop poop))
                 {
                     // send out roots
                     rootSpawner.SpawnRoots((Vector2)hit.transform.position);
+                    
                 }
                 else
                 {

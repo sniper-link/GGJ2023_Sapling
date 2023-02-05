@@ -29,6 +29,7 @@ public class Roots : MonoBehaviour
                     Debug.Log("water");
                     if (Vector3.Distance(targetLocation, transform.position) <= 0.2f)
                     {
+                        waterPond.GetComponent<CircleCollider2D>().enabled = false;
                         waterPond.DrainingWater();
                         StartCoroutine(GiveWater());
                     }
@@ -36,10 +37,17 @@ public class Roots : MonoBehaviour
                 else if (firstHit.TryGetComponent(out Poop poop))
                 {
                     Debug.Log("poop");
+                    if (Vector3.Distance(targetLocation, transform.position) <= 0.2f)
+                    {
+                        poop.GetComponent<CircleCollider2D>().enabled = false;
+                        GameManager.AddPoop();
+                        Destroy(poop.gameObject);
+                        //StartCoroutine(GiveWater());
+                    }
                 }
                 else
                 {
-                    Destroy(this);
+                    //Destroy(this);
                 }
                 Debug.Log(firstHit.name);
                 canMove = false;
@@ -54,16 +62,16 @@ public class Roots : MonoBehaviour
 
     IEnumerator GiveWater()
     {
-        int counter = 10;
+        int counter = 5;
         while (counter > 0)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             counter--;
-            GameManager.AddWater(2);
+            GameManager.AddWater(1);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.name);
         if (collision.TryGetComponent(out WaterPond waterPond))
@@ -82,5 +90,5 @@ public class Roots : MonoBehaviour
         {
             Destroy(this);
         }
-    }
+    }*/
 }

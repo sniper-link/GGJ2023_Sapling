@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5512819276937448078
 SpriteRenderer:
@@ -122,12 +122,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   currentHealth: 0
-  damage: 0
+  enemyDamage: 1
   cc: {fileID: 0}
   rb: {fileID: 0}
   saplingLoc: {x: 0, y: 0}
   moveSpeed: 1
   deathSmokeVFX: {fileID: 8000673054001365274, guid: d03f10f22b3451f47a29f3ae132bfe0e, type: 3}
+  targetMinion: {fileID: 0}
+  canAttack: 1
 --- !u!58 &5512819276937448073
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,9 +143,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.06}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
 --- !u!50 &5512819276937448074
 Rigidbody2D:
   serializedVersion: 4

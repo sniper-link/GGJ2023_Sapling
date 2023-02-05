@@ -6,7 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
-    public float enemyDamage;
+    public float enemyDamage = 1;
     public CircleCollider2D cc;
     public Rigidbody2D rb;
     public Vector2 saplingLoc;
@@ -31,6 +31,9 @@ public class EnemyScript : MonoBehaviour
     {
         //saplingRef  = GameManager.GetSapling();
         saplingLoc = GameManager.GetSapling().transform.position;
+        Vector2 faceDir = saplingLoc - (Vector2)transform.position;
+        GetComponent<SpriteRenderer>().flipX = faceDir.x >= 0;
+        Debug.Log("enemy: " + faceDir.x);
     }
 
     float dealDamange(float d) 
@@ -69,7 +72,7 @@ public class EnemyScript : MonoBehaviour
             //change back to float
             Debug.LogWarning("Hit the Tree");
             Destroy(gameObject);
-            sapling.TakeDamage((int)enemyDamage);
+            sapling.TakeDamage(enemyDamage);
             
            // sapling.takeDamage(damage);
         }

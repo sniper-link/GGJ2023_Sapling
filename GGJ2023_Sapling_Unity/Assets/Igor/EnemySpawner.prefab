@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList:
-  - {fileID: 4060519733128050906, guid: 1c1ead63ea9ded84d8b77d50517048b0, type: 3}
-  - {fileID: 4060519733128050906, guid: 1c1ead63ea9ded84d8b77d50517048b0, type: 3}
+  - {fileID: 5512819276937448075, guid: 1f884bd3a6f700e49b50b467f6983f9c, type: 3}
+  - {fileID: 6281494745343255949, guid: be7b5a70f3cb1ee44a3446bb7e1e69be, type: 3}
   - {fileID: 4060519733128050906, guid: 1c1ead63ea9ded84d8b77d50517048b0, type: 3}
   - {fileID: 4060519733128050906, guid: 1c1ead63ea9ded84d8b77d50517048b0, type: 3}
   spawnRangeXMin: -3
@@ -54,3 +54,4 @@ MonoBehaviour:
   spawnRangeYMin: 0
   spawnRangeYMax: -3
   SpawnCd: 5
+  numToSpawnPerInterval: 5

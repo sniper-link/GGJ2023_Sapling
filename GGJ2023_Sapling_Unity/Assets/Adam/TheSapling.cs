@@ -7,6 +7,8 @@ public class TheSapling : MonoBehaviour
     public HealthBar healthBar;
     public float maxHealth;
     public float currentHealth;
+    public SpriteRenderer saplingSprite;
+    public List<Sprite> growthSprite;
 
     void Start()
     {
@@ -23,6 +25,7 @@ public class TheSapling : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth < 0){
             currentHealth = 0;
+            GameManager.GameOver();
         }
         healthBar.SetHealth(currentHealth);
     }
@@ -35,5 +38,8 @@ public class TheSapling : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
-
+    public void UpdateGrowth(int growthLevel)
+    {
+        saplingSprite.sprite = growthSprite[growthLevel];
+    }
 }

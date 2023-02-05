@@ -134,6 +134,11 @@ MonoBehaviour:
   healthBar: {fileID: 3261733734763722871}
   maxHealth: 10
   currentHealth: 0
+  saplingSprite: {fileID: 6045385934987436136}
+  growthSprite:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!58 &996770641
 CircleCollider2D:
   m_ObjectHideFlags: 0

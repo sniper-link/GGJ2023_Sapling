@@ -21,25 +21,35 @@ public class MinionOnDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
         // if not over ui
-
-        
-        transform.position = Input.mousePosition + (Vector3)mouseOffset;
+        if (GameManager.CanSpawnMinion(minionIndex))
+        {
+            transform.position = Input.mousePosition + (Vector3)mouseOffset;
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //Debug.Log("begin drag");
-        mouseOffset = transform.position - Input.mousePosition;
-        //Debug.Log(mouseOffset);
-        startLocation = transform.position;
+        if (GameManager.CanSpawnMinion(minionIndex))
+        {
+            //Debug.Log("begin drag");
+            mouseOffset = transform.position - Input.mousePosition;
+            //Debug.Log(mouseOffset);
+            startLocation = transform.position;
+        }
+            
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("end drag");
-        transform.position = startLocation;
-        Vector3 spawnLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //Debug.Log(spawnLocation);
-        GameManager.GetMinionSpawner().spawnMinion(minionIndex, spawnLocation);
+        if (GameManager.CanSpawnMinion(minionIndex))
+        {
+            //Debug.Log("end drag");
+            transform.position = startLocation;
+            Vector3 spawnLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //Debug.Log(spawnLocation);
+            GameManager.UseMinionCost(minionIndex);
+            GameManager.GetMinionSpawner().spawnMinion(minionIndex, spawnLocation);
+        }
+            
     }
 }

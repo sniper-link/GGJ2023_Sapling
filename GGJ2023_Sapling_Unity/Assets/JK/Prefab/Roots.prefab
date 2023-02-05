@@ -150,7 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   targetLocation: {x: 6.06, y: -2.56, z: -0.1}
-  moveSpeed: 0.5
+  moveSpeed: 1.5
+  circleRad: 0.3
 --- !u!58 &2122225973
 CircleCollider2D:
   m_ObjectHideFlags: 0
