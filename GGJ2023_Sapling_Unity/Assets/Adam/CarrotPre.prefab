@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5407103094278696474}
-  maxHealth: 0
+  maxHealth: 5
   currentHealth: 0
 --- !u!1001 &8541402509183658536
 PrefabInstance:
