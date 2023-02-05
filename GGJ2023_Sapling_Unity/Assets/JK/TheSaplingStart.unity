@@ -49924,6 +49924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5a18f2be1fbde43b6b5bb89f2cd8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minionIndex: 0
 --- !u!114 &1231878154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55336,7 +55337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393264627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.24, y: 1.39, z: -0.09}
+  m_LocalPosition: {x: -1.24, y: 1.39, z: -0.1}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -59976,6 +59977,8 @@ MonoBehaviour:
   saplingRef: {fileID: 996770639}
   rootSpawner: {fileID: 1002768497}
   minionSpawner: {fileID: 1572723183}
+  waterAmount: 0
+  poopAmount: 0
 --- !u!4 &1855528216
 Transform:
   m_ObjectHideFlags: 0
@@ -60455,11 +60458,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2873766743186288831, guid: 35d6dc8fbf5e80e4b89fb6b0c372ba9f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.33
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 2873766743186288831, guid: 35d6dc8fbf5e80e4b89fb6b0c372ba9f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.55
+      value: -1.71
       objectReference: {fileID: 0}
     - target: {fileID: 2873766743186288831, guid: 35d6dc8fbf5e80e4b89fb6b0c372ba9f, type: 3}
       propertyPath: m_LocalPosition.z
