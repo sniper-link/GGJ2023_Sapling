@@ -21,7 +21,7 @@ public class Carrot : Minion
     }
 
     // Update is called once per frame
-    public static GetClosestEnemy(Vector3 position, float maxRange){
+    /*public static GetClosestEnemy(Vector3 position, float maxRange){
         EnemyScript closest = null;
         Collider2D[] hitList = Physics2D.OverlapCircleAll(transform.position, detectRadius);
         float closetDistance = 100f;
@@ -72,5 +72,5 @@ public class Carrot : Minion
             }
         }
     }
-
+*/
 }

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public List<int> minionPoopCost;
 
     public GameObject waterPondPrefab;
+    public GameObject gameOverScreen;
 
     public Text waterCounter, poopCounter, treeLevelText;
 
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         instance.waterCounter.text = instance.waterAmount.ToString();
         instance.poopCounter.text = instance.poopAmount.ToString();
         instance.treeLevelText.text = instance.treeGrowLevel.ToString();
+        gameOverScreen.SetActive(false);
     }
 
     public static TheSapling GetSapling()
@@ -152,5 +154,6 @@ public class GameManager : MonoBehaviour
     {
         // display a game over screen
         Time.timeScale = 0f;
+        instance.gameOverScreen.SetActive(true);
     }
 }
