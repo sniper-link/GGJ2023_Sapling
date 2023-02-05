@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TheSapling : MonoBehaviour
+public class Minion : MonoBehaviour
 {
     public HealthBar healthBar;
     public float maxHealth;
@@ -12,6 +12,7 @@ public class TheSapling : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
     }
     void Update(){
         if (Input.GetKeyDown(KeyCode.Space)){
@@ -34,6 +35,4 @@ public class TheSapling : MonoBehaviour
         }
         healthBar.SetHealth(currentHealth);
     }
-
-
 }

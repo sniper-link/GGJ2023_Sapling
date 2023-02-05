@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//const float spawnZ = -0.2f;
+
 public enum MinionIndex 
 {
     Onion = 0,
@@ -16,9 +18,12 @@ public class MinionSpawner : MonoBehaviour
     public List<GameObject> MinionList;
     public Vector2 testloc;
 
-    void Start()
-    {
-        spawnMinion(MinionIndex.Mushroom, testloc);
+    // void Start()
+    // {
+    //     spawnMinion(MinionIndex.Onion, testloc);
+    // }
+    public void spawn(){
+        spawnMinion(MinionIndex.Onion, testloc);
     }
 
     public void spawnMinion(MinionIndex minionIndex, Vector2 spawnLocation) {
