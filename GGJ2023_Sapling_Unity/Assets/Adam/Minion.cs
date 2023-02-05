@@ -8,12 +8,19 @@ public class Minion : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
 
+    public GameObject deathSmokeVFX;
+
+    private bool canAttack = true;
+
+    private Animator minionAnimator;
+
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-
+        minionAnimator = GetComponent<Animator>();
     }
+
     void Update(){
         if (Input.GetKeyDown(KeyCode.Space)){
             TakeDamage(2);
@@ -22,8 +29,9 @@ public class Minion : MonoBehaviour
 
     public void TakeDamage(float damage) {
         currentHealth -= damage;
-        if (currentHealth < 0){
-            currentHealth = 0;
+        if (currentHealth <= 0){
+            //currentHealth = 0;
+            DeathEvents();
         }
         healthBar.SetHealth(currentHealth);
     }
@@ -34,5 +42,46 @@ public class Minion : MonoBehaviour
             currentHealth = maxHealth;
         }
         healthBar.SetHealth(currentHealth);
+    }
+
+    protected virtual void AttackEvents()
+    {
+        minionAnimator.SetTrigger("Attack");
+    }
+
+    protected virtual void DeathEvents()
+    {
+        Instantiate(deathSmokeVFX, transform.position, Quaternion.identity, null);
+        Destroy(this);
+    }
+
+    public void CallOnDestroy()
+    {
+        Destroy(this);
+    }
+
+    /*private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out EnemyScript enemy))
+        {
+            canAttack = false;
+            AttackEvents();
+        }
+    }*/
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out EnemyScript enemy))
+        {
+            canAttack = false;
+            AttackEvents();
+            StartCoroutine(AttackCooldown());
+        }
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        canAttack = true;
     }
 }
