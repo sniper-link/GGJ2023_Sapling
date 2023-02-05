@@ -74,8 +74,12 @@ public class EnemyScript : MonoBehaviour
             Debug.LogWarning("Hit the Tree");
             Destroy(gameObject);
             sapling.TakeDamage(enemyDamage);
-            
-           // sapling.takeDamage(damage);
+
+            // sapling.takeDamage(damage);
+        } else if(collision.TryGetComponent(out Minion minion))
+        {
+            minion.TakeDamage(enemyDamage);
+            TakeDamage(minion.damage, minion);
         }
         
     }

@@ -7,6 +7,7 @@ public class Minion : MonoBehaviour
     public HealthBar healthBar;
     public float maxHealth;
     public float currentHealth;
+    public float damage;
 
     public GameObject deathSmokeVFX;
 
@@ -53,7 +54,7 @@ public class Minion : MonoBehaviour
 
     protected virtual void AttackEvents()
     {
-        minionAnimator.SetTrigger("Attack");
+        //minionAnimator.SetTrigger("Attack");
     }
 
     protected virtual void DeathEvents()
@@ -80,7 +81,7 @@ public class Minion : MonoBehaviour
     {
         if (collision.TryGetComponent(out EnemyScript enemy))
         {
-            canAttack = false;
+            canAttack = true;
             AttackEvents();
             StartCoroutine(AttackCooldown());
         }
