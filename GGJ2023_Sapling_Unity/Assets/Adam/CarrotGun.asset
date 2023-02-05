@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b28d64ed9fedd4aacbb0b284784e0c, type: 3}
+  m_Name: CarrotGun
+  m_EditorClassIdentifier: 
+  clipCurrent: 100
+  clipSize: 1000
+  bulletCount: 1
+  bulletSpread: 0
+  bulletSpeed: 20
+  speedFallOff: 1
+  projectileSprite: {fileID: 21300000, guid: 725f25d3187608842b4000b3ddb9e636, type: 3}
+  useRate: 1
+  reloadTime: 10
+  damage: 1
