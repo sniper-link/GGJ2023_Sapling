@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
     public static void SpawnWaterPonds()
     {
         // play rain vfx
-        Vector2 randomSpot = new Vector2(Random.Range(0.1f, 0.9f), Random.Range(0.2f, 0.9f));
+        Vector2 randomSpot = new Vector2(Random.Range(0.1f, 0.9f), Random.Range(0.27f, 0.9f));
         Vector3 spawnLoc = Camera.main.ViewportToWorldPoint(randomSpot);
         spawnLoc.z = -0.1f;
         Instantiate(instance.waterPondPrefab, spawnLoc, Quaternion.identity, null);
@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour
             instance.waterCounter.text = instance.waterAmount.ToString();
             instance.poopCounter.text = instance.poopAmount.ToString();
             instance.treeGrowLevel++;
+            instance.treeLevelText.text = instance.treeGrowLevel.ToString();
             if (instance.treeGrowLevel == 2)
             {
                 instance.saplingRef.UpdateGrowth(1);

@@ -20,7 +20,11 @@ public class Minion : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         minionAnimator = GetComponent<Animator>();
         Vector3 faceDir = GameManager.GetSapling().transform.position - transform.position;
-        GetComponent<SpriteRenderer>().flipX = faceDir.x < 0;
+        if (GetComponent<SpriteRenderer>() != null)
+        {
+            GetComponent<SpriteRenderer>().flipX = faceDir.x < 0;
+        }
+        
         //Debug.Log(faceDir.x);
     }
 

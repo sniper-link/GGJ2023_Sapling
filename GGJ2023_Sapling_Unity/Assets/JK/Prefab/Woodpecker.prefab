@@ -102,12 +102,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   currentHealth: 0
-  enemyDamage: 0
+  enemyDamage: 1
   cc: {fileID: 0}
   rb: {fileID: 0}
   saplingLoc: {x: 0, y: 0}
   moveSpeed: 1.5
   deathSmokeVFX: {fileID: 8000673054001365274, guid: d03f10f22b3451f47a29f3ae132bfe0e, type: 3}
+  poopPrefab: {fileID: 8074246730780407760, guid: f4637d6b5b3665449ba69ff0bd9d9cb7, type: 3}
   targetMinion: {fileID: 0}
   canAttack: 1
 --- !u!95 &6281494745343255946

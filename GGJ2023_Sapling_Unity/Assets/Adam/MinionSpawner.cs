@@ -28,7 +28,7 @@ public class MinionSpawner : MonoBehaviour
     }
 
     public void spawnMinion(MinionIndex minionIndex, Vector2 spawnLocation) {
-       // (int)minionIndex;
+        // (int)minionIndex;
         // for (int i = 0; i < count; i++) {
         //     Vector3 spawnPos = this.transform.position;
         //     Vector3 randRange = new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0);
@@ -37,6 +37,8 @@ public class MinionSpawner : MonoBehaviour
         //     GameObject newEnemy = Instantiate(newEnemy, spawnPos, Quaternion.identity);
         // }
         // StartCoroutine(spawnMinion(Minion, count));
-        Instantiate(MinionList[(int) minionIndex], (Vector3)spawnLocation, Quaternion.identity);
+        Vector3 v3SpawnLoc = spawnLocation;
+        v3SpawnLoc.z = -0.2f;
+        Instantiate(MinionList[(int) minionIndex], v3SpawnLoc, Quaternion.identity);
     }
 }

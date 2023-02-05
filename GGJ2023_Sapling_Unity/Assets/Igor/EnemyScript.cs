@@ -14,6 +14,7 @@ public class EnemyScript : MonoBehaviour
     public float moveSpeed = 5;
 
     public GameObject deathSmokeVFX;
+    public GameObject poopPrefab;
 
     public Minion targetMinion = null;
     public bool canAttack = true;
@@ -33,7 +34,7 @@ public class EnemyScript : MonoBehaviour
         saplingLoc = GameManager.GetSapling().transform.position;
         Vector2 faceDir = saplingLoc - (Vector2)transform.position;
         GetComponent<SpriteRenderer>().flipX = faceDir.x >= 0;
-        Debug.Log("enemy: " + faceDir.x);
+        //Debug.Log("enemy: " + faceDir.x);
     }
 
     float dealDamange(float d) 
@@ -124,6 +125,12 @@ public class EnemyScript : MonoBehaviour
     IEnumerator DeathDelay(GameObject expVFX)
     {
         yield return new WaitForSeconds(1f);
+        if(currentHealth <= 0)
+        {
+            Vector3 spawnLoc = transform.position;
+            spawnLoc.z = -0.1f;
+            Instantiate(poopPrefab, spawnLoc, Quaternion.identity, null);
+        }
         Destroy(gameObject);
         Destroy(expVFX);
     }
