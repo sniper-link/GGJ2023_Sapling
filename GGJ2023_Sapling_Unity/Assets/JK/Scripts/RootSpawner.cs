@@ -15,7 +15,7 @@ public class RootSpawner : MonoBehaviour
     {
         startLocation = (Vector2)GameManager.GetSapling().transform.position;
         
-        SpawnRoots(testLoc);
+        //SpawnRoots(testLoc);
     }
 
     public void SpawnRoots(Vector2 targetLocation)
