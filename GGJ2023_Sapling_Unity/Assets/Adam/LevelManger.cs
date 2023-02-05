@@ -18,4 +18,8 @@ public class LevelManger : MonoBehaviour
         Application.Quit();
     }
 
+    public void LevelSelect(){
+        SceneManager.LoadScene(Level);
+    }
+
 }
