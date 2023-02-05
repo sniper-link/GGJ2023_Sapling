@@ -16,7 +16,7 @@ public class Acorn : Minion
             if (collider.TryGetComponent(out EnemyScript enemy))
             {
                 //enemy.
-                enemy.TakeDamage(3);
+                enemy.TakeDamage(5);
             }
         }
         StartCoroutine(DeathDelay(expVFX));
