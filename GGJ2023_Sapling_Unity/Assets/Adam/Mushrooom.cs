@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Mushrooom : Minion
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float blastRadius = 0.5f;
 
-    // Update is called once per frame
-    void Update()
+    public void CallOnAttack()
     {
-        
+        Collider2D[] hitList = Physics2D.OverlapCircleAll(transform.position, blastRadius);
+        foreach (Collider2D collider in hitList)
+        {
+            if (collider.TryGetComponent(out EnemyScript enemy))
+            {
+                //enemy.
+                enemy.TakeDamage(1);
+            }
+        }
+        //StartCoroutine(DeathDelay(expVFX));
     }
 }
