@@ -15,9 +15,68 @@ public class Carrot : Minion
 
     float timeSinceActive, reloadTime, reloadDelay;
     bool reloading;
+
+    public bool canShoot = true;
+    public float bulletShootingCD = 1f;
+
     void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        //InvokeRepeating("UpdateTarget", 0f, 0.5f);
+    }
+
+    private void Update()
+    {
+        // check for enemy if targetEnemy is null
+        if (targetEnemy == null)
+        {
+            GetNewTarget();
+        }
+        else
+        {
+            if (canShoot)
+            {
+                // have target enemy, spawn carrot bullet and shoot
+                GameObject spawnedBullet = Instantiate(projectilePrefab, this.transform.position, this.transform.rotation, null);
+                spawnedBullet.GetComponent<CurrentBullet>().UpdateTargetEnemy(targetEnemy);
+                canShoot = false;
+                StartCoroutine(BulletShootingCooldown());
+            }
+        }
+
+        
+    }
+
+    IEnumerator BulletShootingCooldown()
+    {
+        yield return new WaitForSeconds(bulletShootingCD);
+        canShoot = true;
+    }
+
+    private void GetNewTarget()
+    {
+        if (targetEnemy == null)
+        {
+            Collider2D[] allEnemy = Physics2D.OverlapCircleAll(this.transform.position, detectRadius);
+            foreach(Collider2D hit in allEnemy)
+            {
+                if (hit.TryGetComponent(out EnemyScript aHit))
+                {
+                    targetEnemy = aHit;
+                    break;
+                }
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (targetEnemy == null)
+        {
+            if (collision.TryGetComponent(out EnemyScript anEnemy))
+            {
+                targetEnemy = anEnemy;
+            }
+        }
     }
 
     // Update is called once per frame
